@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css\style.css') }}" />
+
+    {% if tytul != 'Strona główna'%}
+    <title>{{tytul}}</title>
+    {% else %}
+    <title>Strona główna</title>
+    {% endif %}
+</head>
+<body>
+
+    <nav class="site-header sticky-top py-1">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+          <a class="py-2 d-none d-md-inline-block" href="/">Strona Główna</a>
+          <a class="py-2 d-none d-md-inline-block" href="/about">O mnie</a>
+          <a class="py-2 d-none d-md-inline-block" href="/posty">Posty</a>
+          <a class="py-2 d-none d-md-inline-block" href="/info">Informacje</a>
+        </div>
+    </nav>
+    <main role="main" class="container">
+
+        <div class="starter-template">
+            {%  if tytul != 'Strona główna' %}
+        <h1>Witaj na stronie "{{tytul}}"</h1>
+                <p class="lead">{{tresc}}</p>
+            {% else %}
+            <h1>Witaj na stronie głównej</h1>
+                <p>To jest bardzo fajna strona główna</p>
+            {% endif %}
+
+            {% for post in posty %}
+        <div><p>{{ post.author.username }} napisał/a <b> {{ post.body }}</b></p></div>
+            {% endfor %}
+        </div>
+
+    </main>
+
+</body>
+</html>

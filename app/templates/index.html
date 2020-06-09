@@ -1,0 +1,18 @@
+{% extends "baza.html" %}
+
+{% block content %}
+
+    <div class="starter-template">
+           <div class="container">
+
+
+               {% if current_user.is_authenticated %}
+                   {{ current_user.name }}! Witaj na moim blogu :)
+               {% endif %}
+    </div>
+    </div>
+
+    {% endblock %}
+
+
+
