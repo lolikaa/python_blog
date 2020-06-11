@@ -1,0 +1,89 @@
+{% extends "bootstrap/base.html" %}
+
+<html lang="pl">
+<head>
+    <title>{{ tytul }}</title>
+</head>
+
+{% block menu %}
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>John's Blog</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="/">Home</a></li>
+                <li><a class="py-2 d-none d-md-inline-block" href="/posty">Posty</a></li>
+                <li><a class="py-2 d-none d-md-inline-block" href="/about">O mnie</a></li>
+                <li><a class="py-2 d-none d-md-inline-block" href="/info">Informacje</a></li>
+
+                {% if current_user.is_authenticated %}
+                <li><a class="py-2 d-none d-md-inline-block" href="/logout">Wyloguj</a></li>
+                {% endif %}
+      </ul><br>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Blog..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+    {% endblock %}
+
+<!--{% block menu %}-->
+<!--<div class="navbar navbar-inverse" role="navigation">-->
+<!--    <div class="container">-->
+<!--        <div class="navbar-header">-->
+<!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+<!--<span class="sr-only">Toggle navigation</span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--</button>-->
+<!--            <a class="navbar-brand" href="/">Najlepszy blog<br>na świecie</a>-->
+<!--        </div>-->
+<!--        <div class="navbar-collapse collapse">-->
+<!--            <ul class="nav navbar-nav">-->
+<!--                <li><a href="/">Home</a></li>-->
+<!--                <li><a class="py-2 d-none d-md-inline-block" href="/posty">Posty</a></li>-->
+<!--                <li><a class="py-2 d-none d-md-inline-block" href="/about">O mnie</a></li>-->
+<!--                <li><a class="py-2 d-none d-md-inline-block" href="/info">Informacje</a></li>-->
+
+<!--                {% if current_user.is_authenticated %}-->
+<!--                <li><a class="py-2 d-none d-md-inline-block" href="/logout">Wyloguj</a></li>-->
+<!--                {% endif %}-->
+
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--{% endblock %}-->
+
+
+<!--<main role="main" class="container">-->
+<!--    <div class="starter-template">-->
+<!--        {% if tytul %}-->
+<!--        <h1>{{ tytul }}</h1>-->
+<!--        {% else %}-->
+<!--        <h1>Strona główna</h1>-->
+<!--        {% endif %}-->
+
+<!--        {% block content %}{% endblock %}-->
+<!--    </div>-->
+<!--</main>-->
+
+<div class="col-sm-9">
+        {% if tytul %}
+        <h2>{{ tytul }}</h2>
+        {% else %}
+        <h2>Strona główna</h2>
+        {% endif %}
+    <hr>
+
+    {% block content%} {% endblock%}
+
+
+</div>
+</div>

@@ -1,43 +1,11 @@
-from flask import Flask, render_template, request, Response, redirect, url_for, session, abort
-from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
+from flask import render_template, request, redirect, url_for, abort
+from flask_login import login_required, login_user, logout_user
 from app import app
+from app.login import User, login_manager
 
-
-
-
-# config
-app.config.update(
-    DEBUG=True,
-    SECRET_KEY='sekretny_klucz'
-)
-
-
-
-
-
-
-
-
-
-# ustawienie flask-login
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "login"
-
-
-# model uzytkownika
-class User(UserMixin):
-    def __init__(self, id):
-        self.id = id
-        self.name = "user" + str(id)
-        self.password = self.name + "_secret"
-
-    def __repr__(self):
-        return "%d/%s/%s" % (self.id, self.name, self.password)
-
-
-# generacja uzytkownikow
-users = [User(id) for id in range(1, 10)]
+from flask_bootstrap import Bootstrap
+# ...
+bootstrap = Bootstrap(app)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -62,6 +30,12 @@ def login():
 def page_not_found(e):
     tytul = "Coś poszło nie tak..."
     blad = "401"
+    return render_template('blad.html', tytul=tytul, blad=blad)
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    tytul = "Internal Server Error"
+    blad = "500"
     return render_template('blad.html', tytul=tytul, blad=blad)
 
 
@@ -114,5 +88,3 @@ def posty():
     return render_template("kontent.html", tytul=dane["tytul"], tresc=dane["tresc"], posty=posty)
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
