@@ -1,18 +1,16 @@
 {% extends "base.html" %}
 
+
+
 {% block content %}
 
-    <div class="starter-template">
-           <div class="container">
+<h2>Witaj na moim blogu</h2>
+<p>Jeśli chcesz być aktywnym użytkownikiem i dostawać powiadomienia o najnowszych postach, koniecznie dokonaj rejestracji.
+Tylko zalogowani użytkownicy mają możliwość dodawania komentarzy.</p>
 
 
-               {% if current_user.is_authenticated %}
-                   {{ current_user.name }}! Witaj na moim blogu :)
-               {% endif %}
-    </div>
-    </div>
 
-    {% endblock %}
+{% endblock %}
 
 
 

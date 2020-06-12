@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+
+    {% block content %}
+<div class="container">
+    {% for post in posty %}
+<h4><small>OSTATNIE POSTY</small></h4>
+<hr>
+<h2>{{ post.tytul }}</h2>
+<h5><span class="glyphicon glyphicon-time"></span> Post by {{post.author.username }} on {{ post.data_publikacji }}</h5>
+<p> {{post.body }}</p>
+
+<br><br>
+    {% endfor %}
+    </div>
+    {% endblock %}
+
