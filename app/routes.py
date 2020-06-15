@@ -1,8 +1,10 @@
+from datetime import datetime
+
 from flask import redirect, url_for, render_template, flash, request
 from flask_login import login_required, logout_user, login_user, current_user
 
 from app import app, db, bcrypt
-from app.forms import RegistrationForm, LoginForm
+from app.forms import RegistrationForm, LoginForm, PostForm
 
 from app.models import User, Post, Category
 
@@ -101,11 +103,22 @@ def logout():
 
 
 @app.route("/account")
+@login_required
 def account():
-    tytul='Twoje konto'
-    return render_template('account.html', tytul=tytul)
+    tytul = 'Twoje konto'
+    image_file = url_for('static', filename="profile_pics/" + current_user.image_file)
+    return render_template('account.html', tytul=tytul, image_file=image_file)
 
-@app.route("/admin")
+
+@app.route("/admin", methods=['GET', 'POST'])
+@login_required
 def admin():
-    tytul='Admin panel'
-    return render_template('admin.html', tytul=tytul)
+    tytul = 'Admin panel'
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, body=form.body.data, user_id=current_user.id)
+        db.session.add(post)
+        db.session.commit()
+        flash('Twój post został udostępniony', 'success')
+        return redirect(url_for('posty'))
+    return render_template('admin_panel.html', tytul=tytul, form=form)
