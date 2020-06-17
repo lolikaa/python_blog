@@ -4,10 +4,10 @@
 {% block app_content %}
 <div class="container-fluid">
     <br><br>
-
-    <p clas="lead">Zaloguj się aby uzyskać dostęp do zawartości strony.</p>
-    <br><br>
-
+        <div class="container">
+        <p clas="lead">Zaloguj się aby uzyskać dostęp do zawartości strony.</p>
+        <br><br>
+        </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
@@ -21,7 +21,7 @@
                                     {{ form.username.label(class="col-md-2 col-form-label text-md-right")}} {% if form.username.errors %} {{ form.username(class="form-control form-control-lg is-invalid") }}
                                     <div class="invalid-feedback">
                                         {% for errors in form.username.errors %}
-                                        <span>{{ errors }}</span> {% endfor %}
+                                        <span class="error">{{ errors }}</span> {% endfor %}
                                     </div>
                                     {% else %} {{ form.username(class="form-control form-control-lg") }} {% endif%}
                                 </div>
@@ -30,7 +30,7 @@
                                     {{ form.password.label(class="col-md-2 col-form-label text-md-right")}} {% if form.password.errors %} {{ form.password(class="form-control form-control-lg is-invalid") }}
                                     <div class="invalid-feedback">
                                         {% for errors in form.password.errors %}
-                                        <span>{{ errors }}</span> {% endfor %}
+                                        <span class="error">{{ errors }}</span> {% endfor %}
                                     </div>
                                     {% else %} {{ form.password(class="form-control form-control-lg") }} {% endif%}
                                 </div>
@@ -39,12 +39,8 @@
                                 </div>
                             </fieldset>
 
-
-
-
                             <div class="col-md-6 offset-md">
                                 {{ form.submit(class="btn btn-outline-info")}}
-                                <!--                       <input type="submit" value="Login">-->
                             </div>
                             <small class="text-muted ml-2">
                         <a href="#">Nie pamiętasz hasła?</a>

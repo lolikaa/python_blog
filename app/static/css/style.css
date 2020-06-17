@@ -41,7 +41,9 @@
   background-position: top left;
   background-size: 6px 6px;
 }
-
+.error {
+    color: red;
+}
 .post {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px ;

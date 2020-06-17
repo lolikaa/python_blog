@@ -12,7 +12,8 @@ from app.models import User, Post, Category
 @app.route("/")
 @app.route('/home')
 def home():
-    return render_template('index.html', posty=posty)
+    tytul = "Witaj"
+    return render_template('index.html', tytul=tytul, posty=posty)
 
 
 @app.route("/about/")
