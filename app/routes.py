@@ -72,6 +72,18 @@ def post_edit(post_id):
     return render_template("admin.html", title=post.title + "edit", post=post, form=form, legend='Edytuj post')
 
 
+@app.route("/posty/<int:post_id>/delete", methods=['POST'])
+@login_required
+def post_delete(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Twój post został usunięty', 'success')
+    return redirect(url_for('home'))
+
+
 @app.route("/admin", methods=['GET', 'POST'])
 @login_required
 def admin():

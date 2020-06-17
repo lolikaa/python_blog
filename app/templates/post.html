@@ -10,9 +10,38 @@
 <hr>
 
 <h5><span class="glyphicon glyphicon-time"></span> Post by <span style="color: blue">{{post.author.username }}</span> on {{ post.pub_date.strftime('%d-%m-%Y') }}</h5>
-<br><br>
+{% if post.author == current_user %}
+    <div>
+        <a class="btn btn-info btn-sm m-1"href="{{url_for('post_edit', post_id = post.id)}}">Edytuj</a>
+        <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Usuń</button>
+    </div>
+    <hr>
+
+    {% endif%}
+    <br><br>
 <p class="post indent"> {{post.body }}</p>
 
 </article>
 <br><br>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       <form action="{{ url_for('post_delete', post_id=post.id)}}" method="POST">
+           <input type="submit" class="btn btn-danger" value="Usuń">
+       </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
