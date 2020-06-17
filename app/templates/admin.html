@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 
-{% block content %}
+{% block app_content %}
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
@@ -10,7 +10,7 @@
                         <form action="" method="POST">
                             {{ form.hidden_tag() }}
                             <fieldset class="form-group">
-                                <legend class="border-bottom mb-4">Dodaj nowy post</legend>
+                                <legend class="border-bottom mb-4">{{ legend }}</legend>
                                 <div class="form-group row">
                                     {{ form.title.label(class="col-md-2 col-form-label text-md-right")}} {% if form.title.errors %} {{ form.title(class="form-control form-control-lg is-invalid") }}
                                     <div class="invalid-feedback">

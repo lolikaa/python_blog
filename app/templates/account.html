@@ -1,11 +1,12 @@
 {% extends "base.html" %}}
 
-{% block content %}
+{% block app_content %}
 <div class="container">
     <img src="{{ image_file }}" class="rounded-circle float-left img-thumbnail" alt="profile photo" width="200" height="200">
-    <h4>Profil użytkownika {{ current_user.username }}</h4>
+    <h4>Profil użytkownika <span style="color: #9C1A1C"> {{ current_user.username }} </span> </h4>
     <p class="text-success">{{current_user.email }}</p>
 
 
     </div>
 {% endblock %}
+

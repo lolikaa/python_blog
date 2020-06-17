@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block app_content %}
+
+<h3><small>OSTATNIE POSTY</small></h3>
+<hr class="nice-hr">
+<article>
+<h2>{{ post.title}}</h2>
+<hr>
+
+<h5><span class="glyphicon glyphicon-time"></span> Post by <span style="color: blue">{{post.author.username }}</span> on {{ post.pub_date.strftime('%d-%m-%Y') }}</h5>
+<br><br>
+<p class="post indent"> {{post.body }}</p>
+
+</article>
+<br><br>
+{% endblock %}

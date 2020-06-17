@@ -1,1 +1,1 @@
-# install_requires = ['flask-bootstrap<3', 'another_package']
+install_requires = ['flask-bootstrap<3', 'another_package']
