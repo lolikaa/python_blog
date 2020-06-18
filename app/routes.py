@@ -4,7 +4,7 @@ from flask import redirect, url_for, render_template, flash, request
 from flask_login import login_required, logout_user, login_user, current_user
 
 from app import app, db, bcrypt
-from app.forms import RegistrationForm, LoginForm, PostForm
+from app.forms import RegistrationForm, LoginForm, PostForm, UpdateAccountForm
 
 from app.models import User, Post, Category
 
@@ -96,7 +96,7 @@ def admin():
         db.session.commit()
         flash('Twój post został udostępniony', 'success')
         return redirect(url_for('posty'))
-    return render_template('admin.html', tytul=tytul, form=form, legend='Nowy Post')
+    return render_template('admin.html', tytul=tytul, form=form, legend='Tutaj tworzysz nowy post')
 
 
 @app.route("/rejestracja", methods=['GET', 'POST'])
@@ -125,7 +125,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            return redirect(url_for('home'))
+            return redirect(url_for('posty'))
         else:
             flash('Logowanie nie powiodło się. Niepoprawny login lub hasło.', 'danger')
             return redirect(request.url)
@@ -155,9 +155,19 @@ def logout():
     return render_template('logout.html', tytul=tytul)
 
 
-@app.route("/account")
+@app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
     tytul = 'Twoje konto'
     image_file = url_for('static', filename="profile_pics/" + current_user.image_file)
-    return render_template('account.html', tytul=tytul, image_file=image_file)
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Twoje konto zostało zaktualizowane', 'success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+    return render_template('account.html', tytul=tytul, image_file=image_file, form=form)

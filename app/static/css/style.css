@@ -3,9 +3,14 @@
 
     /* Set gray background color and 100% height */
     .sidenav {
-      background-color: #f1f1f1;
+      background-color: #3F3947;
       min-height: 100vh;
     }
+
+    li > a {
+        color: #ecd0c4;
+    }
+
     .col-sm-9 {
         margin-left: 5px;
         padding-left: 5px;
@@ -41,6 +46,17 @@
   background-position: top left;
   background-size: 6px 6px;
 }
+
+.nice-hr2 {
+  height: 3px;
+  border: 1px solid #968e91;
+  border-width: 1px 0;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 43%, #f99286 44%, #f99286 54%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0) 100%);
+  background-position: top left;
+  background-size: 6px 6px;
+}
+
+
 .error {
     color: red;
 }
@@ -60,4 +76,30 @@
 a:hover {
     text-decoration: none;
     color: yellowgreen;
+}
+
+.blad {
+    font-size: larger;
+}
+
+header {
+    font-family: Helvetica;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+par {
+    font-family: Georgia;
+    font-size: 18px;
+}
+
+body {
+    background-color: #ecd0c4;
+}
+
+.container {
+    background-color: #f1f1f1;
+    min-height: 150px;
+    margin-top: 25px;
+    padding: 20px;
 }

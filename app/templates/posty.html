@@ -6,15 +6,13 @@
 <h3><small>OSTATNIE POSTY</small></h3>
     {% for post in posty %}
 <hr class="nice-hr">
-<h2><a class="article-title" href="{{url_for('post', post_id=post.id) }}">{{ post.title}}</a></h2>
-<hr>
 
     <img class="img-circle" height="65" width="65" alt="Avatar"  src="{{url_for('static', filename='profile_pics/' + post.author.image_file)}}">
-
-
-
     <h5><span class="glyphicon glyphicon-time"></span> Post by <span style="color: blue">{{post.author.username }}</span> on {{ post.pub_date.strftime('%d-%m-%Y') }}</h5>
-<br><br>
+
+<hr style="color: darkgray">
+<h2><a class="article-title" href="{{url_for('post', post_id=post.id) }}">{{ post.title}}</a></h2>
+<br>
 <p class="post indent"> {{post.body }}</p>
 
 

@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 
+
 {% block app_content %}
-<div class="container-fluid">
-    <br><br>
 
-    <p clas="lead">Tylko zarejestrowani użytkownicy mają możliwość komentowania dodawanych treści</p>
-    <br><br>
+<div class="container">
+    <p clas="lead">Tylko zarejestrowani użytkownicy mają możliwość dodawania nowych treści</p>
+<br>
 
-    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-body">
                 <form method="POST" action="">
@@ -22,81 +20,78 @@
 
                         {% if form.username.errors %}
 
-                            {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
                             {% for errors in form.username.errors %}
-                                <span class="error">{{ errors }}</span>
+                            <span class="error">{{ errors }}</span>
                             {% endfor %}
                         </div>
                         {% else %}
                             {{ form.username(class="form-control form-control-lg") }}
                         {% endif%}
                     </div>
-                    <div class="form-group row">
+
+                        <div class="form-group row">
                         {{ form.email.label(class="col-md-2 col-form-label text-md-right")}}
 
                         {% if form.email.errors %}
-
                             {{ form.email(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for errors in form.email.errors %}
+                            <div class="invalid-feedback">
+                                {% for errors in form.email.errors %}
                                 <span>{{ errors }}</span>
-                            {% endfor %}
-                        </div>
-                        {% else %}
+                                {% endfor %}
+                            </div>
+                            {% else %}
                             {{ form.email(class="form-control form-control-lg") }}
-                        {% endif%}
+                            {% endif%}
                     </div>
 
-                    <div class="form-group row">
-                        {{ form.password.label(class="col-md-2 col-form-label text-md-right")}}
+                        <div class="form-group row">
+                            {{ form.password.label(class="col-md-2 col-form-label text-md-right")}}
                             {% if form.password.errors %}
 
                             {{ form.password(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for errors in form.password.errors %}
+                            <div class="invalid-feedback">
+                                {% for errors in form.password.errors %}
                                 <span>{{ errors }}</span>
-                            {% endfor %}
-                        </div>
-                        {% else %}
-                            {{ form.password(class="form-control form-control-lg") }}
-                        {% endif%}
-                    </div>
 
-                    <div class="form-group row">
-                        {{ form.confirm_password.label(class="col-md-2 col-form-label text-md-right")}}
+                                {% endfor %}
+                            </div>
+
+                            {% else %}
+                            {{ form.password(class="form-control form-control-lg") }}
+                            {% endif%}
+                        </div>
+
+                        <div class="form-group row">
+                            {{ form.confirm_password.label(class="col-md-2 col-form-label text-md-right")}}
                             {% if form.confirm_password.errors %}
 
                             {{ form.confirm_password(class="gorm-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for errors in form.confirm_password.errors %}
+                            <div class="invalid-feedback">
+                                {% for errors in form.confirm_password.errors %}
                                 <span>{{ errors }}</span>
-                            {% endfor %}
-                        </div>
-                        {% else %}
-                            {{ form.confirm_password(class="form-control form-control-lg") }}
-                        {% endif%}
-                    </div>
 
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.confirm_password(class="form-control form-control-lg") }}
+                            {% endif%}
+                        </div>
                     </fieldset>
+
                     <div class="col-md-6 offset-md">
-                        {{ form.submit(class="btn btn-outline-info")}}
+                        {{ form.submit(class="btn btn-default")}}
                     </div>
                 </form>
             </div>
-                    <div class="border-top pt-3">
-                        <small class="text-muted">
-                            Czy masz już zarejestrowane konto?
-                            <a class="ml-2" href="{{ url_for('login')}}">Zaloguj się</a>
-                        </small>
-                    </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Czy masz już zarejestrowane konto?
+                    <a class="ml-2" href="{{ url_for('login')}}">Zaloguj się</a>
+                </small>
             </div>
-        </div>
         </div>
     </div>
 </div>
-
-
-
-
-    {% endblock %}
+{% endblock %}
