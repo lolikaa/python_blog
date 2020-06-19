@@ -29,9 +29,9 @@
 
                 {% if current_user.is_authenticated %}
                 <li><a class="py-2 d-none d-md-inline-block" href="/account">Twoje konto</a></li>
-<!--                    {% if current_user.username == 'admin' %}-->
+
                     <li><a class="py-2 d-none d-md-inline-block" href="/admin">Admin Panel</a></li>
-                    {% endif%}
+
                 <li><a class="py-2 d-none d-md-inline-block" href="/logout">Wyloguj</a></li>
                 {% else %}
                 <li><a class="py-2 d-none d-md-inline-block" href="/login">Zaloguj się</a></li>
@@ -48,7 +48,6 @@
                 </span>
             </div>
         </div>
-
 {% endblock %}
 
         {% block content %}
