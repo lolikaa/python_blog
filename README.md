@@ -1,4 +1,4 @@
-# python_blog
+# python_blog - flask
 zaliczenie przedmiotu 'Programowanie w językach skryptowych"
 
 
