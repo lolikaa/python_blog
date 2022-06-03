@@ -1,6 +1,8 @@
 # python_blog - flask
 zaliczenie przedmiotu 'Programowanie w językach skryptowych"
 
+Wykorzystane technologie: Python Flask z bazą SQLite
+
 
 **Instrukcja:**
 
